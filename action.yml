@@ -5,8 +5,11 @@ branding:
   color: gray-dark
 
 inputs:
-  webhook:
-    description: Discord Webhook
+  id:
+    description: The Discord Webhook ID
+    required: true
+  token:
+    description: The Discord Webhook Token
     required: true
 
 runs:
