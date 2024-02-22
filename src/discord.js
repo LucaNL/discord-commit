@@ -39,7 +39,7 @@ function createEmbed(url, commits, size, pusher) {
   return new MessageEmbed()
     .setColor(16733140)
     .setAuthor({
-      name: `${pusher} voegt ${size} update${size === 1 ? "" : "s"} toe`,
+      name: `${pusher} heeft ${size} update${size === 1 ? "" : "s"} toegevoegd`,
       iconURL: `https://github.com/${pusher}.png?size=64`,
     })
     .setTitle("MaarsseveenRP Changelog")
