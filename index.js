@@ -36,7 +36,7 @@ const payload = {
   content: "",
   embeds: [
     {
-      title: "Commits received",
+      title: "1 Commit received",
       description: `[\`\[${shortSha(beforeSha)}...${shortSha(
         afterSha
       )}\]\`](${compareUrl})\n${commits.join("\n")}`,

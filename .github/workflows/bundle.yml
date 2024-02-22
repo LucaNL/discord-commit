@@ -19,6 +19,6 @@ jobs:
         run: |
           echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
       - name: Push
-        uses: satackey/push-prebuilt-action@release-master
+        uses: satackey/push-prebuilt-action@v0.0.4
         with:
           push-branch: release-${{ steps.name.outputs.branch }}
