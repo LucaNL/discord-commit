@@ -1,15 +1,14 @@
-name: Discord Notifier
-description: Get notification on discord.
+name: "Classic Discord Webhook"
+description: "This GitHub Action sends simple discord messages for your commits."
 branding:
-  color: blue
-  icon: message-square
+  icon: activity
+  color: gray-dark
+
 inputs:
   webhook:
-    description: A full discord webhook url
+    description: Discord Webhook
     required: true
-output:
-  result:
-    description: Webhook result
+
 runs:
-  using: node12
-  main: index.js
+  using: "node16"
+  main: "src/index.js"
