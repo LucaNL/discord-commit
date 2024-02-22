@@ -1,27 +1,14 @@
-on:
-  push:
-    branches:
-      - "**"
+on: [push]
 
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
-
     steps:
       - name: Setup node.js
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Output branch name
-        id: name
-        run: |
-          echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
-
-      - name: Push
-        uses: satackey/push-prebuilt-action@v0.1
-        with:
-          push-branch: release-master
+      - name: Install dependencies
+        run: npm install
