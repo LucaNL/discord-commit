@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   build_and_push:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Setup node.js
