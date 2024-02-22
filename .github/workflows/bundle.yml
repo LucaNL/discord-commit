@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Setup node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Output branch name
+        id: name
+        run: |
+          echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
+
+      - name: Push
+        uses: satackey/push-prebuilt-action@v0.0.4
+        with:
+          push-branch: release-${{ steps.name.outputs.branch }}

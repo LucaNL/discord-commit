@@ -7,9 +7,7 @@ inputs:
   webhook:
     description: A full discord webhook url
     required: true
-  message-title:
-    description: Message title
-output:
+outputs:
   result:
     description: Webhook result
 runs:
