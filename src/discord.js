@@ -57,18 +57,19 @@ function createEmbed(url, commits, size, pusher) {
 
 function getChangeLog(commits, size) {
   let changelog = "";
-  for (const i in commits) {
-    if (i > 10) {
-      changelog += `+ ${size - i} meer...\n`;
-      break;
-    }
-
+  for (let i = 0; i < Math.min(commits.length, 10); i++) {
     const commit = commits[i];
-    const message =
-      commit.message.length > MAX_MESSAGE_LENGTH
-        ? commit.message.substring(0, MAX_MESSAGE_LENGTH) + "..."
-        : commit.message;
-    changelog += `— ${message}\n`;
+    if (!commit.message.includes("Merge")) {
+      const message =
+        commit.message.length > MAX_MESSAGE_LENGTH
+          ? commit.message.substring(0, MAX_MESSAGE_LENGTH) + "..."
+          : commit.message;
+      changelog += `— ${message}\n`;
+    }
+  }
+
+  if (commits.length > 10) {
+    changelog += `+ ${commits.length - 10} meer...\n`;
   }
 
   return changelog;
