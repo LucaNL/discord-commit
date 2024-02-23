@@ -11,15 +11,17 @@ module.exports.send = (id, token, repo, url, commits, size, pusher) =>
         id: id,
         token: token,
       });
-      client
-        .send({
-          username: username,
-          embeds: [createEmbed(url, commits, size, pusher)],
-        })
-        .then(() => {
-          console.log("Successfully sent the message!");
-          resolve();
-        }, reject);
+      if (!getChangeLog(commits, size) == "") {
+        client
+          .send({
+            username: username,
+            embeds: [createEmbed(url, commits, size, pusher)],
+          })
+          .then(() => {
+            console.log("Successfully sent the message!");
+            resolve();
+          }, reject);
+      } else console.log("No valid commits");
     } catch (error) {
       console.log("Error creating Webhook");
       reject(error.message);
