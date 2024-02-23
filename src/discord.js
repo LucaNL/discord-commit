@@ -59,7 +59,10 @@ function getChangeLog(commits, size) {
   let changelog = "";
   for (let i = 0; i < Math.min(commits.length, 10); i++) {
     const commit = commits[i];
-    if (!commit.message.includes("Merge")) {
+    if (
+      !commit.message.includes("Merge") &&
+      !commit.message.includes("-hide")
+    ) {
       const message =
         commit.message.length > MAX_MESSAGE_LENGTH
           ? commit.message.substring(0, MAX_MESSAGE_LENGTH) + "..."
